@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MY APP</title>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+	<header>
+		<nav class="narbar navbar-inverse">
+			<a href="/" class="navbar-brand">HELLO</a>
+			<ul class="nav navbar-nav">
+				<li><a href="/">HOME</a></li>
+				<li><a href="/result">RESULT</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="jumbotron text-center">
+		<!--<h3>World of Change</h3>-->
+			<div class="container">
+				<div class="row">
+
+					<form method="POST" action='/'>
+						<div class="col-lg-6">
+							<div class="form-inline">
+								<input id="Longitude" 	type="text" 	class="form-control" 	placeholder="Longitude" 	name="in_long">
+								<input id="Latitude" 	type="text" 	class="form-control" 	placeholder="Latitude" 		name="in_lat" >
+								<input id="When" 		type="text" 	class="form-control" 	placeholder="YYYY-M-DD"	name="in_when">
+								<button class="btn btn-primary go-btn" 	type="submit">Go!</button>
+								<button class="btn btn-danger reset-btn" type="reset">Reset</button>
+							</div>
+						</div>
+					</form>
+				</div>
+    		</div>
+		<p></p>
+		<p></p>
+		
+		<div id="app"></div>
+
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+
+$.ajax({
+	method: 'POST',
+	url: '/',
+	// data: {	in_long: document.getElementById('Longitude').value, 
+	// 		 in_lat: document.getElementById('Latitude').value, 
+	// 		 in_when: document.getElementById('When').value},  //Date
+	data: { 
+		in_long: 'lon',
+		in_lat: 'lat',
+		in_when: Date('in_when')
+	},
+
+	success: function(res){
+		//do something wit the data
+		console.log('im successful')
+		console.log(res)
+		for(var i = 0; i < res.length; i++) { 
+			console.log(res[i].url)
+			var showImg = '<img src=' + res[i].url + '></img>';
+		};
+	}
+});																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															1
+
+</script>
+</body>
+</html>
